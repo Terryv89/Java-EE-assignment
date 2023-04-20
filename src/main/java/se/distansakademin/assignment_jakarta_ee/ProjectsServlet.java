@@ -41,8 +41,7 @@ public class ProjectsServlet extends HttpServlet {
         } else {
             listProjects(request, response);
         }
-    }// lägg till en else if: action.equals("edit"){ny vy för uppdatera och ta bo}
-    // else if för delete och den ssita
+    }
 
     private void listProjects(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var projects = projectRepository.getAll();
@@ -58,9 +57,6 @@ public class ProjectsServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-    // i get lägga till kod för att hämta formuläret för edit.
-    // en separat undersida för att edita en resurs
-    // exempelvis kan m
 
 
 }
