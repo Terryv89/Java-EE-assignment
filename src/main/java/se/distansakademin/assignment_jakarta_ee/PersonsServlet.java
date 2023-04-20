@@ -29,18 +29,24 @@ public class PersonsServlet extends HttpServlet {
 
         var person = new Person(name, lastName);
 
-        if (action.equals("create")) {
-            personRepository.savePerson(person);
-        } else if (action.equals("update")) {
-            var idString = request.getParameter("id");
-            var id = Long.parseLong(idString);
-            person.setId(id);
-            personRepository.update(person);
-        } else if (action.equals("delete")) {
-            var idString = request.getParameter("id");
-            var id = Long.parseLong(idString);
+        switch (action) {
+            case "create":
+                personRepository.savePerson(person);
+                break;
+            case "update": {
+                var idString = request.getParameter("id");
+                var id = Long.parseLong(idString);
+                person.setId(id);
+                personRepository.update(person);
+                break;
+            }
+            case "delete": {
+                var idString = request.getParameter("id");
+                var id = Long.parseLong(idString);
 
-            personRepository.delete(id);
+                personRepository.delete(id);
+                break;
+            }
         }
         response.sendRedirect(request.getContextPath() + "/persons");
     }

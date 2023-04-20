@@ -57,6 +57,4 @@ public class ProjectsServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
-
-
 }
